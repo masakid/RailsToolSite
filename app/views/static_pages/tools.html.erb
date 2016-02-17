@@ -3,7 +3,8 @@
 <p>文字数をカウントするツール</p>
 <ul>文字のみ数える</ul>
 <ul>空白は数えない</ul>
-
-<textarea width = "300px", ng-model="string"></textarea>
-<p>現在の文字数：{{string.length}}</p>
-<input type="button" value="押す" onclick="disp()"/>
+<div ng-controller='myCtrl'>
+  <textarea width = "300px", ng-model="string"></textarea>
+  <p>現在の文字数：{{string.length}}</p>
+  <input type="button" value="押す" onclick="disp()"/>
+</div>
