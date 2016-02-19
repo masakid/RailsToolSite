@@ -1,10 +1,30 @@
+<%= javascript_tag do %>
+function disp(){
+  alert("hello");
+}
 
-<h1>tools</h1>
-<p>文字数をカウントするツール</p>
-<ul>文字のみ数える</ul>
-<ul>空白は数えない</ul>
-<div ng-controller='myCtrl'>
+var app = angular.module('myApp', []);
+
+app.controller('MainCtrl', function($scope) {
+  $scope.name = 'hokkaido';
+
+});
+
+<% end %>
+
+
+<div ng-app = "myApp">
+  <h1>tools</h1>
+  <p>文字数をカウントするツール</p>
+  <ul>文字のみ数える</ul>
+  <ul>空白は数えない</ul>
   <textarea width = "300px", ng-model="string"></textarea>
   <p>現在の文字数：{{string.length}}</p>
   <input type="button" value="押す" onclick="disp()"/>
+  <input type="text" ng-model="name">
+  <div>Hello! {{name}}</div>
+  <div ng-controller='MainCtrl'>
+    <input type="text" ng-model="name">
+    <div>Hello! {{name}}</div>
+  </div>
 </div>
