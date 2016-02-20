@@ -7,7 +7,62 @@ var app = angular.module('myApp', []);
 
 app.controller('MainCtrl', function($scope) {
   $scope.name = 'hokkaido';
+  $scope.now = new Date();
+  $scope.searchText = 'yamada';
 
+  $scope.names = [
+      'Kazuhito Hokamura',
+      'Takeshi Takatsudo',
+      'Akihiro Oyamada',
+      'Kazunori Tokuda',
+      'Yukihisa Yamada',
+    ];
+
+  $scope.onClickBtn = function(){
+    //文字列を反対にする
+    $scope.name = $scope.name.split('').reverse().join('');
+
+  };
+
+});
+app.filter('reverse', function() {
+  return function(input) {
+    // 入力が文字列じゃなかったら空文字を返す
+    if (typeof input !== 'string') {
+      return '';
+    }
+
+    // 入力文字列を逆にして返す
+    return input.split('').reverse().join('');
+  };
+});
+
+app.filter('truncate', function() {
+  return function(input, length, suffix) {
+    // デフォルトでは10文字で切る
+    if (length === undefined) {
+      length = 10;
+    }
+
+    // デフォルトの末尾文字は`...`
+    if (suffix === undefined) {
+      suffix = '...';
+    }
+
+    // 入力文字列が`length`より短かったらそのまま入力を返す
+    if (input.length <= length) {
+      return input;
+    }
+
+    // `length`の長さで切って末尾文字くっつけて返す
+    return input.substring(0, length) + suffix;
+  };
+});
+
+app.controller('FirstCtrl', function($scope) {
+});
+
+app.controller('SecondCtrl', function($scope) {
 });
 
 <% end %>
@@ -25,6 +80,26 @@ app.controller('MainCtrl', function($scope) {
   <div>Hello! {{name}}</div>
   <div ng-controller='MainCtrl'>
     <input type="text" ng-model="name">
-    <div>Hello! {{name}}</div>
+    <pre>{{ name | reverse }}</pre>
+    <div>{{ name | truncate }}</div>
+    <div>{{ name | truncate:4 }}</div>
+    <div>{{ name | truncate:4:'・・・' }}</div>
+    <button ng-click="onClickBtn()">reverse</button>
+    <div>Hello! {{name | uppercase}}</div>
+    <div>{{now | date:'yyyy/MM/dd/HH:mm:ss'}}</div>
+    <input type="text" ng-model="searchText">
+  <pre>{{ names | filter:searchText | json }}</pre>
   </div>
+  <div ng-controller="FirstCtrl">
+    <input type="text" ng-model="name">
+    <div>Hello {{name}}!</div>
+  </div>
+
+  <div ng-controller="SecondCtrl">
+    <input type="text" ng-model="name">
+    <div>Hello {{name}}!</div>
+
+  </div>
+
+
 </div>
