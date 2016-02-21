@@ -75,16 +75,18 @@ app.controller('SecondCtrl', function($scope) {
   <ul>空白は数えない</ul>
   <textarea width = "300px", ng-model="string"></textarea>
   <p>現在の文字数：{{string.length}}</p>
-  <input type="button" value="押す" onclick="disp()"/>
-  <input type="text" ng-model="name">
-  <div>Hello! {{name}}</div>
+  <button type="button" class="btn btn-default" onclick="disp()">Click</button>
+  <div class="input group">
+    <input type="text" class="form-control" ng-model="name">
+    <div>Hello! {{name}}</div>
+  </div>
   <div ng-controller='MainCtrl'>
     <input type="text" ng-model="name">
     <pre>{{ name | reverse }}</pre>
     <div>{{ name | truncate }}</div>
     <div>{{ name | truncate:4 }}</div>
     <div>{{ name | truncate:4:'・・・' }}</div>
-    <button ng-click="onClickBtn()">reverse</button>
+    <button type="button" class="btn btn-default" ng-click="onClickBtn()">reverse</button>
     <div>Hello! {{name | uppercase}}</div>
     <div>{{now | date:'yyyy/MM/dd/HH:mm:ss'}}</div>
     <input type="text" ng-model="searchText">
@@ -100,6 +102,25 @@ app.controller('SecondCtrl', function($scope) {
     <div>Hello {{name}}!</div>
 
   </div>
+
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+    <li><a tabindex="-1" href="#">Action</a></li>
+    <li><a tabindex="-1" href="#">Another action</a></li>
+    <li><a tabindex="-1" href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a tabindex="-1" href="#">Separated link</a></li>
+  </ul>
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default">Left</button>
+    <button type="button" class="btn btn-default">Middle</button>
+    <button type="button" class="btn btn-default">Right</button>
+  </div>
+  <button type="button" class="btn btn-default" aria-label="Left Align">
+  <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+</button>
+
+
+
 
 
 </div>
