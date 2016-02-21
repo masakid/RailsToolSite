@@ -25,6 +25,21 @@ app.controller('MainCtrl', function($scope) {
   };
 
 });
+
+app.controller('ProgressCtrl', function($scope) {
+  $scope.onClickBtn = function(){
+    if($scope.progress == 100){
+        return
+        
+    }
+    $scope.progress = Number($scope.progress) + 10;
+  };
+
+  $scope.onClickDelete = function(){
+    $scope.progress = 0;
+  };
+});
+
 app.filter('reverse', function() {
   return function(input) {
     // 入力が文字列じゃなかったら空文字を返す
@@ -116,8 +131,23 @@ app.controller('SecondCtrl', function($scope) {
     <button type="button" class="btn btn-default">Right</button>
   </div>
   <button type="button" class="btn btn-default" aria-label="Left Align">
-  <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-</button>
+    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+  </button>
+  <div class="alert alert-success" role="alert">...</div>
+  <div ng-controller="ProgressCtrl">
+    <input type="text" ng-model="progress" ng-init="progress='0'"/>
+    <button type="button" class="btn btn-default" ng-click="onClickBtn()">up to progress</button>
+    <button type="button" class="btn btn-default" ng-click="onClickDelete()">zero</button>
+
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}"
+        aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
+        <!--<span class="sr-only">60% complete</span>-->
+      {{progress}}%
+    </div>
+  </div>
+</div>
+
 
 
 
