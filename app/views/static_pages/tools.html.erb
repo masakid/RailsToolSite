@@ -30,7 +30,7 @@ app.controller('ProgressCtrl', function($scope) {
   $scope.onClickBtn = function(){
     if($scope.progress == 100){
         return
-        
+
     }
     $scope.progress = Number($scope.progress) + 10;
   };
@@ -98,6 +98,7 @@ app.controller('SecondCtrl', function($scope) {
   <div ng-controller='MainCtrl'>
     <input type="text" ng-model="name">
     <pre>{{ name | reverse }}</pre>
+    <pre>{{ name | truncate }}</pre>
     <div>{{ name | truncate }}</div>
     <div>{{ name | truncate:4 }}</div>
     <div>{{ name | truncate:4:'・・・' }}</div>
