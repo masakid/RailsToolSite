@@ -106,7 +106,7 @@ app.controller('SecondCtrl', function($scope) {
     <div>Hello! {{name | uppercase}}</div>
     <div>{{now | date:'yyyy/MM/dd/HH:mm:ss'}}</div>
     <input type="text" ng-model="searchText">
-  <pre>{{ names | filter:searchText | json }}</pre>
+    <pre>{{ names | filter:searchText | json }}</pre>
   </div>
   <div ng-controller="FirstCtrl">
     <input type="text" ng-model="name">
@@ -142,16 +142,10 @@ app.controller('SecondCtrl', function($scope) {
 
     <div class="progress">
       <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}"
-        aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
-        <!--<span class="sr-only">60% complete</span>-->
+      aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
+      <!--<span class="sr-only">60% complete</span>-->
       {{progress}}%
+      </div>
     </div>
   </div>
-</div>
-
-
-
-
-
-
 </div>
